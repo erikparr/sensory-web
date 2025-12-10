@@ -62,7 +62,7 @@ export const projects: Project[] = [
         id: 4,
         title: "Exquisite Landscape",
         subtitle: "",
-        description: "Exquisite Landscape is a web-based generative AI artwork clock that displays a continuously evolving landscape throughout the day.",
+        description: "LandscapeClock is a generative AI art piece that creates a continuously panning 24-hour landscape panorama synchronized to real time. A Railway background worker runs daily, using LangChain + OpenAI to generate 24 chained narrative prompts—each referencing the previous for continuity—then iteratively builds a seamless panorama using Stability AI's mask-based inpainting, preserving existing content while extending the scene segment by segment. The resulting image and continuity files are uploaded to Vercel Blob storage, where a Nuxt/Vue frontend pans through the panorama based on current time, with hourly descriptions appearing via typewriter animation. Multi-day continuity is achieved by using each day's final segment as the next day's starting point.",
         mediaContent: "/images/exquisite-landscape.png",
         mediaType: "image" as const,
         ctaLink: "https://landscapeclock.vercel.app",
