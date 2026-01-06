@@ -5,7 +5,7 @@ export interface Project {
     description: string;
     category: string;
     mediaContent: string | string[];
-    mediaType: 'image' | 'vimeo';
+    mediaType: 'image' | 'vimeo' | 'foam3d';
     ctaLink?: string;
     ctaText?: string;
     customClass?: string;
@@ -25,6 +25,18 @@ export const projects: Project[] = [
     },
     {
         id: 1,
+        title: "FOAM — Design / Development / Product",
+        subtitle: "Roles: Product Design, Full-Stack Development, Audio Engineering",
+        description: "Designed and built a creative product that makes AI-generated speech playable. FOAM transforms synthesized voice into phonetic elements—enabling musicians to trigger stutters, glitch consonants, and vowel textures via MIDI or the built-in step sequencer.<br><br>FOAM Studio leverages generative text-to-speech APIs, processing output through custom phoneme alignment workflows to extract frame-accurate timing data. Designed the complete product pipeline from real-time playback systems to e-commerce licensing and cross-platform CI/CD distribution.",
+        mediaContent: "",
+        mediaType: "foam3d" as const,
+        ctaLink: "https://www.extrasensory.studio/foam",
+        ctaText: "View Product",
+        category: "AI, Interactive",
+        defaultVisible: true
+    },
+    {
+        id: 100,
         title: "Extrasensory — Digital Product Studio",
         subtitle: "Roles: Founder, Product Design, Full-Stack Development, Brand Strategy",
         description: "Founded Extrasensory, a digital product studio focused on creating professional tools for creative expression. Led the complete product development lifecycle from concept to commercial launch, establishing brand identity, technical infrastructure, and go-to-market strategy.<br><br>First product: VEX MIDI Expression, a cross-platform audio plugin that transforms MIDI controllers into expressive instruments using real-time physics simulation. Developed hybrid architecture combining JUCE C++ for DSP with React/TypeScript UI, achieving sub-10ms latency with sample-accurate MIDI timing.<br><br>Built automated CI/CD pipeline for cross-platform distribution (macOS/Windows/Linux, VST3/AU formats). Designed and launched e-commerce platform with Stripe integration and automated delivery system. Product successfully launched and actively used by music producers worldwide.",
@@ -33,7 +45,7 @@ export const projects: Project[] = [
         ctaLink: "https://www.extrasensory.studio",
         ctaText: "Visit Extrasensory",
         category: "Interactive, AI, Mechatronic",
-        defaultVisible: true
+        defaultVisible: false
     },
     {
         id: 2,

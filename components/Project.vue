@@ -3,28 +3,31 @@
     <h2 class="project-title">{{ title }}</h2>
     <p v-if="subtitle" class="project-subtitle">{{ subtitle }}</p>
     <div class="project-content">
-      <div class="project-media">
+      <div class="project-media" :class="{ 'foam3d-media': mediaType === 'foam3d' }">
         <template v-if="Array.isArray(mediaContent)">
           <div v-for="(media, index) in mediaContent" :key="index" class="media-item">
             <img v-if="mediaType === 'image'" :src="media" :alt="title" />
           </div>
         </template>
         <template v-else>
-          <img 
-            v-if="mediaType === 'image'" 
-            :src="mediaContent" 
-            :alt="title" 
+          <img
+            v-if="mediaType === 'image'"
+            :src="mediaContent"
+            :alt="title"
             :class="customClass"
           />
-          <iframe 
-            v-else-if="mediaType === 'vimeo'" 
-            :src="mediaContent" 
-            width="100%" 
-            height="500px" 
+          <iframe
+            v-else-if="mediaType === 'vimeo'"
+            :src="mediaContent"
+            width="100%"
+            height="500px"
             frameborder="0"
-            allow="autoplay; fullscreen; picture-in-picture" 
+            allow="autoplay; fullscreen; picture-in-picture"
             allowfullscreen
           ></iframe>
+          <ClientOnly v-else-if="mediaType === 'foam3d'">
+            <FoamLogo3D />
+          </ClientOnly>
         </template>
       </div>
       <div class="project-description" v-html="description"></div>
@@ -36,12 +39,14 @@
 </template>
 
 <script setup lang="ts">
+import FoamLogo3D from './FoamLogo3D.vue';
+
 interface ProjectProps {
   title: string;
   subtitle?: string;
   description: string;
   mediaContent: string | string[];
-  mediaType: 'image' | 'vimeo';
+  mediaType: 'image' | 'vimeo' | 'foam3d';
   ctaLink?: string;
   ctaText?: string;
   customClass?: string;
@@ -107,6 +112,13 @@ const props = defineProps<ProjectProps>();
 
 .project-media iframe {
   height: 800px;
+}
+
+.foam3d-media {
+  width: 100%;
+  height: 400px;
+  border-radius: 4px;
+  overflow: hidden;
 }
 
 .project-description {
