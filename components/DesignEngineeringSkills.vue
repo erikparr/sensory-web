@@ -22,20 +22,21 @@
       </div>
 
       <div class="skill-group">
-        <h3>Data, Realtime & AI Integration</h3>
+        <h3>Systems & Production Infrastructure</h3>
         <ul>
-          <li>Real-time data pipelines (sockets, Firebase, streaming dashboards)</li>
-          <li>Sensor and signal processing for audio/motion-driven interfaces</li>
-          <li>Integrating AI/ML outputs into explainable, usable UX</li>
+          <li>API design and multi-service orchestration</li>
+          <li>Async job queues and event-driven architectures</li>
+          <li>CI/CD pipelines and cross-platform deployment</li>
+          <li>Payment integration and webhook handlers</li>
         </ul>
       </div>
 
       <div class="skill-group">
-        <h3>Advanced Prototyping & Real-Time 3D Systems</h3>
+        <h3>Data, AI & Visualization</h3>
         <ul>
-          <li>Real-time 3D interfaces for tools, simulation, and visualization</li>
-          <li>3D scene, camera, and interaction design across devices and environments</li>
-          <li>Environment-aware and multi-device interaction patterns (spatial audio, headtracking, device sensors, WebXR / ARKit / ARCore / 8th Wall) used to de-risk novel interactions before production</li>
+          <li>Data visualization for complex datasets and analytics</li>
+          <li>Real-time data pipelines and streaming interfaces</li>
+          <li>AI/ML integration with production-ready error handling</li>
         </ul>
       </div>
     </div>
