@@ -27,7 +27,7 @@ export const projects: Project[] = [
         id: 1,
         title: "FOAM — Design / Development / Product",
         subtitle: "Roles: Product Design, Full-Stack Development, Audio Engineering",
-        description: "Designed and built a creative product that makes AI-generated speech playable. FOAM transforms synthesized voice into phonetic elements—enabling musicians to trigger stutters, glitch consonants, and vowel textures via MIDI or the built-in step sequencer.<br><br>FOAM Studio leverages generative text-to-speech APIs, processing output through custom phoneme alignment workflows to extract frame-accurate timing data. Designed the complete product pipeline from real-time playback systems to e-commerce licensing and cross-platform CI/CD distribution.",
+        description: "Designed and built a creative product that makes AI-generated speech playable. FOAM transforms synthesized voice into phonetic elements—enabling musicians to trigger stutters, glitch consonants, and vowel textures via MIDI or the built-in step sequencer.<br><br>Built an async processing pipeline that generates speech via text-to-speech APIs, runs forced alignment to extract frame-accurate phoneme boundaries, and delivers playable sample bundles—all orchestrated through job queues with webhook-based payments and automated error recovery. Shipped a complete product now used by producers worldwide.",
         mediaContent: "",
         mediaType: "foam3d" as const,
         ctaLink: "https://www.extrasensory.studio/foam",
