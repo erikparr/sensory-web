@@ -130,7 +130,7 @@ export const projects: Project[] = [
         mediaContent: "https://eaca4835oc4rgi75.public.blob.vercel-storage.com/emotion-x.gif",
         mediaType: "image" as const,
         category: "AR/VR, Interactive, 3D",
-        defaultVisible: true
+        defaultVisible: false
     },
     {
         id: 10,
