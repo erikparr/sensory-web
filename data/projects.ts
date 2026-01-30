@@ -26,7 +26,7 @@ export const projects: Project[] = [
     {
         id: 1,
         title: "FOAM — Design / Development / Product",
-        subtitle: "Roles: Product Design, Full-Stack Development, Audio Engineering",
+        subtitle: "Concept to Product Launch in 3 weeks",
         description: "Designed and built a creative product that makes AI-generated speech playable. FOAM transforms synthesized voice into phonetic elements—enabling musicians to trigger stutters, glitch consonants, and vowel textures via MIDI or the built-in step sequencer.<br><br>Built an async processing pipeline that generates speech via text-to-speech APIs, runs forced alignment to extract frame-accurate phoneme boundaries, and delivers playable sample bundles—all orchestrated through job queues with webhook-based payments and automated error recovery. Shipped a complete product now used by producers worldwide.",
         mediaContent: "",
         mediaType: "foam3d" as const,
