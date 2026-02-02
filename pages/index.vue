@@ -1,8 +1,7 @@
 <template>
   <div class="container">
     <header>
-      <h1>Erik Parr</h1>
-      <h2 class="role-line">Design Engineer / Design Technologist</h2>
+      <h1>Sensory</h1>
       <p class="domain-line">Interactive Systems · Data Visualization · AI-Driven Tools </p>
       <p class="hero-paragraph">
         Designing interactive systems—advanced product tools and UIs, immersive experiences, and AI-driven interfaces.
