@@ -1,0 +1,187 @@
+/* main.css */
+
+@font-face {
+    font-family: 'Nunito Sans';
+    src: url('/fonts/Nunito_Sans/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'Nunito Sans';
+    src: url('/fonts/Nunito_Sans/NunitoSans-Italic-VariableFont_YTLC,opsz,wdth,wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: italic;
+    font-display: swap;
+  }
+  
+  /* Rest of your CSS remains the same */   
+  /* CSS Variables */
+  :root {
+    --font-primary: 'Nunito Sans', sans-serif;
+    --color-text: #e0e0e0;
+    --color-background: #121212;
+    --color-surface: #1e1e1e;
+    --color-surface-hover: #2d2d2d;
+    --color-border: #333333;
+    --color-primary: #ffffff;
+    --color-secondary: #03dac6;
+    --max-width: 1200px;
+    --spacing-unit: 1rem;
+  }
+  
+  /* Global Styles */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-background);
+  }
+  
+  /* Typography */
+  h1, h2, h3, h4, h5, h6 {
+    margin-bottom: var(--spacing-unit);
+    line-height: 1.2;
+    color: var(--color-text);
+  }
+  
+  p {
+    margin-bottom: var(--spacing-unit);
+  }
+  
+  /* Links */
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  a:hover {
+    color: var(--color-secondary);
+  }
+  
+  /* Layout */
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-unit);
+  }
+  
+  /* Utility Classes */
+  .text-center {
+    text-align: center;
+  }
+  
+  .mb-1 { margin-bottom: var(--spacing-unit); }
+  .mb-2 { margin-bottom: calc(var(--spacing-unit) * 2); }
+  .mb-3 { margin-bottom: calc(var(--spacing-unit) * 3); }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    html {
+      font-size: 14px;
+    }
+  
+    .container {
+      padding: 0 calc(var(--spacing-unit) / 2);
+    }
+  }
+  
+  /* Accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+  
+  /* Print Styles */
+  @media print {
+    body {
+      background-color: white;
+      color: black;
+      font-size: 11pt;
+      line-height: 1.4;
+    }
+
+    a {
+      color: black;
+      text-decoration: none;
+    }
+
+    /* Hide interactive elements */
+    .category-filter,
+    .cta-link {
+      display: none !important;
+    }
+
+    /* Page break control */
+    .project {
+      page-break-inside: avoid;
+      break-inside: avoid;
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .skills-section {
+      page-break-inside: avoid;
+      break-inside: avoid;
+      background: none;
+      border: 1px solid #ccc;
+      margin-bottom: 2rem;
+    }
+
+    /* Ensure images don't break */
+    img, iframe {
+      page-break-inside: avoid;
+      break-inside: avoid;
+      max-height: 400px;
+      object-fit: contain;
+    }
+
+    /* Header spacing */
+    header {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid black;
+    }
+
+    h1, h2, h3 {
+      color: black;
+      page-break-after: avoid;
+      break-after: avoid;
+    }
+
+    /* Tighten spacing */
+    .container {
+      padding: 0;
+      max-width: 100%;
+    }
+
+    .project-description {
+      font-size: 10pt;
+    }
+
+    .skill-group h3 {
+      color: black;
+    }
+
+    .skill-group li::before {
+      color: black;
+    }
+  }
