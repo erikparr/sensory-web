@@ -16,8 +16,8 @@ export const projects: Project[] = [
     {
         id: 0,
         title: "Intuitive Surgical — Advanced Product Design",
-        subtitle: "Roles: Design Technologist, Data Visualization, AI/ML",
-        description: "<strong>Designing and engineering advanced prototypes for future surgical video and analytics tools, exploring new ways for clinicians and researchers to navigate, understand, and summarize complex procedures.</strong><br><br>Sole design engineer / design technologist embedded in an advanced product design team, responsible for building future-facing prototypes for surgical video and data tools. Developed internal case-explorer concepts that link procedure video with rich system data and event timelines, and prototyped interfaces for structured procedure insight and automated post-case review.",
+        subtitle: "Design Technologist, Data Visualization, AI/ML",
+        description: "Built future-facing surgical video prototypes that changed how clinicians review procedures. Designed and engineered advanced interfaces linking procedure video with rich system data and event timelines, enabling structured procedure insight and automated post-case review.",
         mediaContent: "/images/intuitive.png",
         mediaType: "image" as const,
         category: "Interactive, AI",
@@ -33,6 +33,36 @@ export const projects: Project[] = [
         ctaLink: "https://www.extrasensory.studio/foam",
         ctaText: "View Product",
         category: "AI, Interactive",
+        defaultVisible: true
+    },
+    {
+        id: 3,
+        title: "Adidas AR Exhibition",
+        subtitle: "Lead Developer, Exhibition Design, AR/VR",
+        description: "Delivered a permanent AR exhibition at Adidas HQ Germany, with interactive experiences triggered by physical markers. Led creative technical direction for the full interactive exhibition.",
+        mediaContent: "https://player.vimeo.com/video/345657151",
+        mediaType: "vimeo",
+        category: "AR/VR, Interactive, Exhibition/Museum, 3D",
+        defaultVisible: true
+    },
+    {
+        id: 7,
+        title: "Interactive 3D Web Campaign",
+        subtitle: "Three.js, WebGL",
+        description: "Shipped a fully interactive 3D product experience running in the browser. Led software development for a seamless web experience built with Three.js and WebGL that let users explore and interact with a new product in a rich 3D environment.",
+        mediaContent: "https://eaca4835oc4rgi75.public.blob.vercel-storage.com/suckerpunchv.gif",
+        mediaType: "image" as const,
+        category: "Interactive, 3D",
+        defaultVisible: true
+    },
+    {
+        id: 14,
+        title: "Permanent Installation at Microsoft Cybercrime Center",
+        subtitle: "Software Development, Interactive Data Art, Exhibition Design",
+        description: "Created a permanent data visualization installation mapping live botnet activity from millions of infected computers. At The Office for Creative Research, built an interactive application that lets researchers visually and sonically explore realtime datasets, giving an intuitive understanding of botnet behavior over time.",
+        mediaContent: "https://eaca4835oc4rgi75.public.blob.vercel-storage.com/ocr.gif",
+        mediaType: "image" as const,
+        category: "Interactive, Exhibition/Museum",
         defaultVisible: true
     },
     {
@@ -61,16 +91,6 @@ export const projects: Project[] = [
         defaultVisible: false
     },
     {
-        id: 3,
-        title: "Adidas AR Exhibition",
-        subtitle: "Exhibition Roles: Lead Developer, Exhibition Design, AR/VR",
-        description: "For the permanent Adidas AR exhibition at Adidas HQ in Germany, I acted as creative technical lead for the interactive exhibition. The experience featured a number of interactive AR experiences that were triggered by physical markers.",
-        mediaContent: "https://player.vimeo.com/video/345657151",
-        mediaType: "vimeo",
-        category: "AR/VR, Interactive, Exhibition/Museum, 3D",
-        defaultVisible: true
-    },
-    {
         id: 4,
         title: "Exquisite Landscape",
         subtitle: "",
@@ -80,7 +100,7 @@ export const projects: Project[] = [
         ctaLink: "https://landscapeclock.vercel.app",
         ctaText: "Launch Experience",
         category: "AI, Artwork",
-        defaultVisible: true
+        defaultVisible: false
     },
     {
         id: 5,
@@ -90,7 +110,7 @@ export const projects: Project[] = [
         mediaContent: "https://eaca4835oc4rgi75.public.blob.vercel-storage.com/headtracking.gif",
         mediaType: "image" as const,
         category: "AR/VR, Interactive",
-        defaultVisible: true
+        defaultVisible: false
     },
     {
         id: 6,
@@ -100,17 +120,7 @@ export const projects: Project[] = [
         mediaContent: "https://eaca4835oc4rgi75.public.blob.vercel-storage.com/immersive-motion.gif",
         mediaType: "image" as const,
         category: "AR/VR, 3D, Interactive",
-        defaultVisible: true
-    },
-    {
-        id: 7,
-        title: "Interactive 3D Web Campaign",
-        subtitle: "",
-        description: "Lead Software Development for a seamless 3D web experience that allowed users to experience a new product in a fun way. The experience was built using Three.js and WebGL to create a fully interactive 3D environment that could be explored in the browser.",
-        mediaContent: "https://eaca4835oc4rgi75.public.blob.vercel-storage.com/suckerpunchv.gif",
-        mediaType: "image" as const,
-        category: "Interactive, 3D",
-        defaultVisible: true
+        defaultVisible: false
     },
     {
         id: 8,
@@ -120,7 +130,7 @@ export const projects: Project[] = [
         mediaContent: "https://eaca4835oc4rgi75.public.blob.vercel-storage.com/touchless-qr.gif",
         mediaType: "image" as const,
         category: "AR/VR, Interactive, 3D",
-        defaultVisible: true
+        defaultVisible: false
     },
     {
         id: 9,
@@ -140,7 +150,7 @@ export const projects: Project[] = [
         mediaContent: "https://eaca4835oc4rgi75.public.blob.vercel-storage.com/8thWall-is-xr.gif",
         mediaType: "image" as const,
         category: "AR/VR",
-        defaultVisible: true,
+        defaultVisible: false,
         customClass: "portrait-image-constrain"
     },
     {
@@ -151,7 +161,7 @@ export const projects: Project[] = [
         mediaContent: "https://eaca4835oc4rgi75.public.blob.vercel-storage.com/waterCube.gif",
         mediaType: "image" as const,
         category: "AR/VR, 3D",
-        defaultVisible: true,
+        defaultVisible: false,
         customClass: "portrait-image-constrain"
     },
     {
@@ -162,7 +172,7 @@ export const projects: Project[] = [
         mediaContent: "https://eaca4835oc4rgi75.public.blob.vercel-storage.com/ribbonSwarm.gif",
         mediaType: "image" as const,
         category: "AR/VR, 3D",
-        defaultVisible: true,
+        defaultVisible: false,
         customClass: "portrait-image-constrain"
     },
     {
@@ -176,16 +186,6 @@ export const projects: Project[] = [
         defaultVisible: false
     },
     {
-        id: 14,
-        title: "Permanent Installation at Microsoft Cybercrime Center",
-        subtitle: "Roles: Software Development, Creative Technology, Interactive Data Art and Exhibition Design",
-        description: "At The Office for Creative Research, we created a permanent installation for the Microsoft Cybercrime enter which maps and visualizes botnets in the wild to give researchers a more intuitive way of understanding their activity over time. Using realtime datasets from millions of infected computers, we created an interactive application that allowed the data to be explored visually and sonically.",
-        mediaContent: "https://eaca4835oc4rgi75.public.blob.vercel-storage.com/ocr.gif",
-        mediaType: "image" as const,
-        category: "Interactive, Exhibition/Museum",
-        defaultVisible: true
-    },
-    {
         id: 15,
         title: "ScreamOmeter – Breaking glass with sound at Norwegian Science Museum",
         subtitle: "Roles: Technical Direction, Conceptual Development, Creative Technology, Interactive",
@@ -193,7 +193,7 @@ export const projects: Project[] = [
         mediaContent: "/images/screamometer.png",
         mediaType: "image" as const,
         category: "Interactive, Exhibition/Museum, Mechatronic",
-        defaultVisible: true
+        defaultVisible: false
     },
     {
         id: 16,
@@ -203,7 +203,7 @@ export const projects: Project[] = [
         mediaContent: "/images/oli.png",
         mediaType: "image" as const,
         category: "Interactive, Mechatronic, Exhibition/Museum",
-        defaultVisible: true
+        defaultVisible: false
     },
     {
         id: 17,
@@ -213,7 +213,7 @@ export const projects: Project[] = [
         mediaContent: "/images/resonators.png",
         mediaType: "image" as const,
         category: "Interactive, Exhibition/Museum, Mechatronic",
-        defaultVisible: true
+        defaultVisible: false
     },
     {
         id: 18,
@@ -233,7 +233,7 @@ export const projects: Project[] = [
         mediaContent: "/images/spectralMass.png",
         mediaType: "image" as const,
         category: "Exhibition/Museum, Artwork",
-        defaultVisible: true
+        defaultVisible: false
     },
     {
         id: 20,
@@ -285,7 +285,6 @@ export const projects: Project[] = [
         category: "Mechatronic, Exhibition/Museum, Artwork",
         defaultVisible: false
     },
-
     {
         id: 25,
         title: " ",
@@ -295,9 +294,9 @@ export const projects: Project[] = [
         mediaType: "image" as const,
         category: "AR/VR, 3D",
         defaultVisible: false
-    },];
+    },
+];
 
-// Optional: Export categories separately if you want to maintain a specific order
 export const categories = [
     'All',
     'AI',
