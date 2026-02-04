@@ -17,18 +17,75 @@
   }
   
   /* Rest of your CSS remains the same */   
-  /* CSS Variables */
+  /* Design Tokens */
   :root {
     --font-primary: 'Nunito Sans', sans-serif;
+
+    /* Colors */
     --color-text: #e0e0e0;
+    --color-text-muted: #888888;
     --color-background: #121212;
     --color-surface: #1e1e1e;
     --color-surface-hover: #2d2d2d;
     --color-border: #333333;
     --color-primary: #ffffff;
     --color-secondary: #03dac6;
-    --max-width: 1200px;
+    --color-error: #cf6679;
+    --color-success: #4caf50;
+
+    /* Typography scale */
+    --font-size-xs: 0.75rem;    /* 12px */
+    --font-size-sm: 0.875rem;   /* 14px */
+    --font-size-base: 1rem;     /* 16px */
+    --font-size-lg: 1.125rem;   /* 18px */
+    --font-size-xl: 1.25rem;    /* 20px */
+    --font-size-2xl: 1.5rem;    /* 24px */
+    --font-size-3xl: 2rem;      /* 32px */
+    --font-size-4xl: 2.5rem;    /* 40px */
+
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+    --line-height-tight: 1.2;
+    --line-height-normal: 1.6;
+    --line-height-relaxed: 1.8;
+
+    /* Spacing (4px base, 8-point grid) */
+    --space-1: 0.25rem;   /* 4px */
+    --space-2: 0.5rem;    /* 8px */
+    --space-3: 0.75rem;   /* 12px */
+    --space-4: 1rem;      /* 16px */
+    --space-6: 1.5rem;    /* 24px */
+    --space-8: 2rem;      /* 32px */
+    --space-10: 2.5rem;   /* 40px */
+    --space-12: 3rem;     /* 48px */
+    --space-16: 4rem;     /* 64px */
+    --space-20: 5rem;     /* 80px */
+    --space-24: 6rem;     /* 96px */
     --spacing-unit: 1rem;
+
+    /* Layout */
+    --max-width: 1200px;
+    --max-width-narrow: 800px;
+
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 12px;
+
+    /* Breakpoints (reference values for media queries) */
+    --bp-sm: 480px;
+    --bp-md: 768px;
+    --bp-lg: 1024px;
+    --bp-xl: 1280px;
+
+    /* Motion */
+    --duration-fast: 150ms;
+    --duration-normal: 300ms;
+    --duration-slow: 500ms;
+    --ease-default: ease;
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   /* Global Styles */

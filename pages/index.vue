@@ -1,14 +1,13 @@
 <template>
   <div class="container">
     <header>
-      <h1>SENSORY</h1>
       <p class="value-prop">
         We deliver prototypes, design advanced products and solve complex design problems to launch products with speed.
       </p>
       <a href="#contact" class="cta-button">Get in Touch</a>
     </header>
 
-    <section class="services">
+    <section id="services" class="services">
       <div class="services-grid">
         <div class="service-card">
           <h3>Launch Sprint</h3>
@@ -26,7 +25,9 @@
       <p class="pricing-signal">Engagements starting at $5K</p>
     </section>
 
-    <Portfolio :isCollapsed="false" @collapse="() => { }" previewText="View Portfolio" />
+    <div id="work">
+      <Portfolio :isCollapsed="false" @collapse="() => { }" previewText="View Portfolio" />
+    </div>
 
     <ContactForm />
   </div>
@@ -52,19 +53,12 @@ body {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: var(--padding);
+  padding-top: calc(64px + var(--padding));
 }
 
 header {
   text-align: center;
   margin-bottom: 3rem;
-}
-
-h1 {
-  font-size: 4rem;
-  font-weight: 200;
-  color: var(--color-text);
-  margin-bottom: 0.5rem;
-  letter-spacing: 0.15em;
 }
 
 .value-prop {
@@ -136,10 +130,6 @@ h1 {
 @media (max-width: 768px) {
   :root {
     --padding: 1rem;
-  }
-
-  h1 {
-    font-size: 2.5rem;
   }
 
   .value-prop {

@@ -12,17 +12,17 @@ export default defineEventHandler(async (event) => {
 
   const resend = new Resend(config.resendApiKey);
 
-  try {
-    await resend.emails.send({
-      from: 'SENSORY <onboarding@resend.dev>',
-      to: config.contactEmail,
-      subject: `New inquiry from ${name}`,
-      replyTo: email,
-      text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
-    });
+  const { data, error } = await resend.emails.send({
+    from: 'SENSORY <noreply@sensory.build>',
+    to: config.contactEmail,
+    subject: `New inquiry from ${name}`,
+    replyTo: email,
+    text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
+  });
 
-    return { success: true };
-  } catch (e: any) {
-    throw createError({ statusCode: 500, message: 'Failed to send message.' });
+  if (error) {
+    throw createError({ statusCode: 500, message: error.message });
   }
+
+  return { success: true };
 });
