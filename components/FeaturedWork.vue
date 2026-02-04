@@ -8,8 +8,11 @@
         :href="project.link || '#'"
         class="work-card"
       >
-        <div class="work-card-image">
-          <img :src="project.image" :alt="project.title" />
+        <div class="work-card-image" :class="{ 'work-card-interactive': project.interactive }">
+          <ClientOnly v-if="project.interactive">
+            <FoamLogo3D />
+          </ClientOnly>
+          <img v-else :src="project.image" :alt="project.title" />
         </div>
         <div class="work-card-info">
           <h3>{{ project.title }}</h3>
@@ -21,6 +24,7 @@
 </template>
 
 <script setup lang="ts">
+import FoamLogo3D from '~/components/FoamLogo3D.vue';
 import imgGlobalNutrition from '~/assets/images/global-nutrition.png';
 import imgUnderArmour from '~/assets/images/under-armour.png';
 import imgMac from '~/assets/images/mac.png';
@@ -28,6 +32,13 @@ import imgLevis from '~/assets/images/levis.png';
 import imgSamsung from '~/assets/images/samsung.png';
 
 const projects = [
+  {
+    slug: 'foam',
+    title: 'FOAM — Design / Development / Product',
+    description: 'Designed and built a creative product that makes AI-generated speech playable. FOAM transforms synthesized voice into phonetic elements—enabling musicians to trigger stutters, glitch consonants, and vowel textures via MIDI.',
+    interactive: true,
+    link: 'https://www.extrasensory.studio/foam',
+  },
   {
     slug: 'intuitive',
     title: 'Intuitive Surgical — Advanced Product Design',
@@ -119,6 +130,20 @@ const projects = [
   aspect-ratio: 16 / 10;
   overflow: hidden;
   background-color: var(--color-background);
+}
+
+.work-card-interactive {
+  height: 0;
+  padding-bottom: 62.5%;
+  position: relative;
+}
+
+.work-card-interactive :deep(.foam-logo-3d) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .work-card-image img {
