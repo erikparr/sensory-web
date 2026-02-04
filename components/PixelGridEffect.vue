@@ -9,7 +9,9 @@ const containerRef = ref(null)
 
 let renderer, mainScene, mainCamera, renderTarget
 let shaderScene, shaderCamera, shaderMaterial
-let instancedMesh, circleGeometry, circleMaterial
+let circleGeometry
+let instancedMeshes = []
+let materials = []
 let animationId = 0
 let pixelBuffer = null
 
@@ -29,11 +31,24 @@ const waveFragmentShader = `
 
   void main() {
     vec2 uv = gl_FragCoord.xy / uResolution;
-    float wave = sin(uv.x * 10.0 - uTime * 2.0) * 0.5 + 0.5;
-    wave *= sin(uv.y * 8.0 + uTime * 1.5) * 0.5 + 0.5;
-    gl_FragColor = vec4(vec3(wave), 1.0);
+    float r = sin(uv.x * 6.0 - uTime * 1.5) * 0.5 + 0.5;
+    float g = sin(uv.x * 6.0 - uTime * 1.5 + 2.094) * 0.5 + 0.5;
+    float b = sin(uv.x * 6.0 - uTime * 1.5 + 4.189) * 0.5 + 0.5;
+    float yWave = sin(uv.y * 5.0 + uTime * 1.0) * 0.5 + 0.5;
+    gl_FragColor = vec4(r * yWave, g * yWave, b * yWave, 1.0);
   }
 `
+
+// Scale range — constrained for subtle variation
+const SCALE_MIN = 0.15
+const SCALE_MAX = 0.55
+
+// Triangular offsets for each color grid
+const GRID_LAYERS = [
+  { color: 0xff6b6b, offsetX: 0,     offsetY: 0.33,  channel: 0 }, // coral
+  { color: 0x4ecdc4, offsetX: -0.29, offsetY: -0.17, channel: 1 }, // teal
+  { color: 0xc44dff, offsetX: 0.29,  offsetY: -0.17, channel: 2 }, // violet
+]
 
 let THREE = null
 
@@ -79,18 +94,15 @@ onMounted(async () => {
   mainScene = new THREE.Scene()
   mainScene.background = new THREE.Color(0x000000)
 
-  // Calculate ortho bounds to keep grid centered and fitting
   const updateCamera = (w, h) => {
     const aspect = w / h
     const gridAspect = COLS / ROWS
 
     let halfW, halfH
     if (aspect > gridAspect) {
-      // Window wider than grid — fit height
       halfH = ROWS / 2 + 1
       halfW = halfH * aspect
     } else {
-      // Window taller than grid — fit width
       halfW = COLS / 2 + 1
       halfH = halfW / aspect
     }
@@ -108,26 +120,36 @@ onMounted(async () => {
   }
   updateCamera(width, height)
 
-  // Circle grid using InstancedMesh
+  // Shared circle geometry
   circleGeometry = new THREE.CircleGeometry(0.4, 32)
-  circleMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff })
-  instancedMesh = new THREE.InstancedMesh(circleGeometry, circleMaterial, TOTAL)
 
+  // Create 3 instanced meshes — one per color layer
   const dummy = new THREE.Object3D()
-  for (let row = 0; row < ROWS; row++) {
-    for (let col = 0; col < COLS; col++) {
-      const x = col - (COLS - 1) / 2
-      const y = row - (ROWS - 1) / 2
-      dummy.position.set(x, y, 0)
-      dummy.scale.set(1, 1, 1)
-      dummy.updateMatrix()
-      instancedMesh.setMatrixAt(row * COLS + col, dummy.matrix)
-    }
-  }
-  instancedMesh.instanceMatrix.needsUpdate = true
-  mainScene.add(instancedMesh)
+  for (const layer of GRID_LAYERS) {
+    const mat = new THREE.MeshBasicMaterial({
+      color: layer.color,
+      blending: THREE.AdditiveBlending,
+      transparent: true
+    })
+    materials.push(mat)
 
-  // Pixel buffer for readRenderTargetPixels
+    const mesh = new THREE.InstancedMesh(circleGeometry, mat, TOTAL)
+    for (let row = 0; row < ROWS; row++) {
+      for (let col = 0; col < COLS; col++) {
+        const x = col - (COLS - 1) / 2 + layer.offsetX
+        const y = row - (ROWS - 1) / 2 + layer.offsetY
+        dummy.position.set(x, y, 0)
+        dummy.scale.set(1, 1, 1)
+        dummy.updateMatrix()
+        mesh.setMatrixAt(row * COLS + col, dummy.matrix)
+      }
+    }
+    mesh.instanceMatrix.needsUpdate = true
+    mainScene.add(mesh)
+    instancedMeshes.push({ mesh, layer })
+  }
+
+  // Pixel buffer
   pixelBuffer = new Uint8Array(COLS * ROWS * 4)
 
   // Animation
@@ -140,30 +162,32 @@ onMounted(async () => {
     const elapsed = clock.getElapsedTime()
     shaderMaterial.uniforms.uTime.value = elapsed
 
-    // Render wave to offscreen target
+    // Render color shader to offscreen target
     renderer.setRenderTarget(renderTarget)
     renderer.render(shaderScene, shaderCamera)
 
-    // Read pixels
+    // Read pixels once
     renderer.readRenderTargetPixels(renderTarget, 0, 0, COLS, ROWS, pixelBuffer)
 
-    // Update instance scales based on brightness
-    for (let row = 0; row < ROWS; row++) {
-      for (let col = 0; col < COLS; col++) {
-        const i = row * COLS + col
-        const pixelIndex = i * 4
-        const brightness = pixelBuffer[pixelIndex] / 255
-        const s = Math.max(brightness, 0.05)
+    // Update each layer's instance scales from its channel
+    for (const { mesh, layer } of instancedMeshes) {
+      for (let row = 0; row < ROWS; row++) {
+        for (let col = 0; col < COLS; col++) {
+          const i = row * COLS + col
+          const pixelIndex = i * 4 + layer.channel
+          const brightness = pixelBuffer[pixelIndex] / 255
+          const s = SCALE_MIN + brightness * (SCALE_MAX - SCALE_MIN)
 
-        const x = col - (COLS - 1) / 2
-        const y = row - (ROWS - 1) / 2
-        dummy2.position.set(x, y, 0)
-        dummy2.scale.set(s, s, 1)
-        dummy2.updateMatrix()
-        instancedMesh.setMatrixAt(i, dummy2.matrix)
+          const x = col - (COLS - 1) / 2 + layer.offsetX
+          const y = row - (ROWS - 1) / 2 + layer.offsetY
+          dummy2.position.set(x, y, 0)
+          dummy2.scale.set(s, s, 1)
+          dummy2.updateMatrix()
+          mesh.setMatrixAt(i, dummy2.matrix)
+        }
       }
+      mesh.instanceMatrix.needsUpdate = true
     }
-    instancedMesh.instanceMatrix.needsUpdate = true
 
     // Render main scene
     renderer.setRenderTarget(null)
@@ -190,7 +214,7 @@ onBeforeUnmount(() => {
     window.removeEventListener('resize', containerRef.value._onResize)
   }
   if (circleGeometry) circleGeometry.dispose()
-  if (circleMaterial) circleMaterial.dispose()
+  materials.forEach(m => m.dispose())
   if (shaderMaterial) shaderMaterial.dispose()
   if (renderTarget) renderTarget.dispose()
   if (renderer) {
