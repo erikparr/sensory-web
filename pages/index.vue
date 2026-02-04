@@ -1,40 +1,19 @@
 <template>
   <div class="container">
-    <header>
-      <p class="value-prop">
-        We deliver prototypes, design advanced products and solve complex design problems to launch products with speed.
-      </p>
+    <section class="hero">
+      <h1>A design engineering studio for AI companies.</h1>
+      <p class="hero-sub">UX-first product design, R&D, and prototyping.</p>
       <a href="#contact" class="cta-button">Get in Touch</a>
-    </header>
-
-    <section id="services" class="services">
-      <div class="services-grid">
-        <div class="service-card">
-          <h3>Launch Sprint</h3>
-          <p>Concept to working prototype in 2 weeks</p>
-        </div>
-        <div class="service-card">
-          <h3>Product Engineering</h3>
-          <p>Embed with your team for focused builds</p>
-        </div>
-        <div class="service-card">
-          <h3>Discovery Audit</h3>
-          <p>1-week deep dive into your product/tech stack</p>
-        </div>
-      </div>
-      <p class="pricing-signal">Engagements starting at $5K</p>
     </section>
 
-    <div id="work">
-      <Portfolio :isCollapsed="false" @collapse="() => { }" previewText="View Portfolio" />
-    </div>
+    <FeaturedWork />
 
     <ContactForm />
   </div>
 </template>
 
 <script setup lang="ts">
-import Portfolio from '~/components/Portfolio.vue';
+import FeaturedWork from '~/components/FeaturedWork.vue';
 import ContactForm from '~/components/ContactForm.vue';
 </script>
 
@@ -56,18 +35,26 @@ body {
   padding-top: calc(64px + var(--padding));
 }
 
-header {
+.hero {
+  padding: 5rem 0;
+  margin-bottom: 4rem;
   text-align: center;
-  margin-bottom: 3rem;
 }
 
-.value-prop {
-  max-width: 700px;
-  margin: 0 auto 2rem;
-  font-size: 1.2rem;
+.hero h1 {
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #ff6b9d;
+  margin-bottom: 1.25rem;
+}
+
+.hero-sub {
+  font-size: 1.25rem;
   font-weight: 300;
-  line-height: 1.7;
-  color: var(--color-text);
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  margin-bottom: 2rem;
 }
 
 .cta-button {
@@ -87,57 +74,14 @@ header {
   color: var(--color-background);
 }
 
-/* Services Section */
-.services {
-  margin-bottom: 3rem;
-  text-align: center;
-}
-
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.service-card {
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  padding: 2rem 1.5rem;
-}
-
-.service-card h3 {
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: var(--color-text);
-  margin-bottom: 0.5rem;
-}
-
-.service-card p {
-  font-size: 0.95rem;
-  font-weight: 300;
-  color: #999;
-  margin-bottom: 0;
-}
-
-.pricing-signal {
-  font-size: 0.95rem;
-  color: #777;
-  font-weight: 300;
-}
 
 @media (max-width: 768px) {
   :root {
     --padding: 1rem;
   }
 
-  .value-prop {
-    font-size: 1rem;
-  }
-
-  .services-grid {
-    grid-template-columns: 1fr;
+  .hero h1 {
+    font-size: 2.2rem;
   }
 }
 </style>

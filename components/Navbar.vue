@@ -60,8 +60,8 @@ function scrollToTop() {
 }
 
 .navbar-brand {
-  font-size: var(--font-size-lg);
-  font-weight: 200;
+  font-size: var(--font-size-2xl);
+  font-weight: 500;
   letter-spacing: 0.15em;
   color: var(--color-text);
   text-decoration: none;
