@@ -30,6 +30,7 @@ import imgUnderArmour from '~/assets/images/under-armour.png';
 import imgMac from '~/assets/images/mac.png';
 import imgLevis from '~/assets/images/levis.png';
 import imgSamsung from '~/assets/images/samsung.png';
+import imgAdidas from '~/assets/images/adidas.png';
 
 const projects = [
   {
@@ -67,6 +68,12 @@ const projects = [
     slug: 'adidas',
     title: 'Adidas AR Exhibition',
     description: 'Delivered a permanent AR exhibition at Adidas HQ Germany, with interactive experiences triggered by physical markers. Led creative technical direction for the full interactive exhibition.',
+    image: imgAdidas,
+  },
+  {
+    slug: 'suckerpunch',
+    title: 'Suckerpunch Web Campaign',
+    description: 'Lead Software Development for a seamless 3D web experience that allowed users to experience a new product in a fun way. The experience was built using Three.js and WebGL to create a fully interactive 3D environment that could be explored in the browser.',
     image: 'https://eaca4835oc4rgi75.public.blob.vercel-storage.com/suckerpunchv.gif',
   },
   {
