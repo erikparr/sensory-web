@@ -1,0 +1,72 @@
+[
+  {
+    "name": "speed",
+    "type": "float",
+    "value": 2.42
+  },
+  {
+    "name": "noiseFrequency",
+    "type": "float",
+    "value": 0.96
+  },
+  {
+    "name": "waveAmplitude",
+    "type": "float",
+    "value": 1.06
+  },
+  {
+    "name": "colorPrimary",
+    "type": "vec4",
+    "value": {
+      "x": 1,
+      "y": 0.7764705882352941,
+      "z": 0.043137254901960784,
+      "w": 1
+    }
+  },
+  {
+    "name": "colorSecondary1",
+    "type": "vec4",
+    "value": {
+      "x": 0.9019607843137255,
+      "y": 0.08235294117647059,
+      "z": 0.0784313725490196,
+      "w": 1
+    }
+  },
+  {
+    "name": "colorSecondary",
+    "type": "vec4",
+    "value": {
+      "x": 0.06666666666666667,
+      "y": 0,
+      "z": 1,
+      "w": 1
+    }
+  },
+  {
+    "name": "colorMix",
+    "type": "float",
+    "value": 0.64
+  },
+  {
+    "name": "speed",
+    "type": "float",
+    "value": 2.42
+  },
+  {
+    "name": "noiseFrequency",
+    "type": "float",
+    "value": 0.96
+  },
+  {
+    "name": "waveAmplitude",
+    "type": "float",
+    "value": 1.06
+  },
+  {
+    "name": "shininess",
+    "type": "float",
+    "value": 0.13
+  }
+]

@@ -100,19 +100,20 @@ const projects = [
 <style scoped>
 .featured-work {
   margin-bottom: 4rem;
+  padding: 0 8vw;
 }
 
 .section-title {
-  font-size: 2rem;
-  font-weight: 200;
-  letter-spacing: 0.05em;
-  color: var(--color-text);
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #ffffff;
   margin-bottom: 2.5rem;
 }
 
 .work-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 }
 

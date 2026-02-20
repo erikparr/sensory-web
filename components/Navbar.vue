@@ -50,9 +50,7 @@ function scrollToTop() {
 }
 
 .navbar-inner {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 var(--space-8);
+  padding: 0 8vw;
   height: 64px;
   display: flex;
   align-items: center;
@@ -77,9 +75,9 @@ function scrollToTop() {
 }
 
 .navbar-links a {
-  font-size: var(--font-size-sm);
-  font-weight: 400;
-  color: var(--color-text-muted);
+  font-size: 1rem;
+  font-weight: 500;
+  color: #ffffff;
   text-decoration: none;
   transition: color var(--duration-fast) var(--ease-default);
 }
@@ -93,7 +91,7 @@ function scrollToTop() {
   padding: 8px 20px;
   background-color: var(--color-primary);
   color: var(--color-background);
-  border-radius: var(--radius-md);
+  border-radius: 100px;
   font-size: var(--font-size-sm);
   font-weight: 500;
   text-decoration: none;
