@@ -2,9 +2,14 @@
   <div>
     <section class="hero">
       <div class="hero-left">
-        <h1>We design and build digital experiences that ship.</h1>
-        <p class="hero-sub">From strategy to prototypes to production-ready code to results.</p>
-        <div class="hero-ctas">
+        <ClientOnly>
+          <HeroHeadline @assembled="onAssembled" />
+          <template #fallback>
+            <h1>We design and build digital experiences that ship.</h1>
+          </template>
+        </ClientOnly>
+        <p ref="heroSubRef" class="hero-sub" style="opacity: 0">From strategy to prototypes to production-ready code to results.</p>
+        <div ref="heroCtasRef" class="hero-ctas" style="opacity: 0">
           <a href="#" class="cta-button" @click.prevent="showContact = true">Get in Touch</a>
           <a href="#work" class="cta-button-outline">View Work</a>
         </div>
@@ -35,7 +40,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onUnmounted } from 'vue'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import FeaturedWork from '~/components/FeaturedWork.vue';
 import Services from '~/components/Services.vue';
 import Process from '~/components/Process.vue';
@@ -45,8 +52,48 @@ import CtaBanner from '~/components/CtaBanner.vue';
 import Footer from '~/components/Footer.vue';
 import ContactModal from '~/components/ContactModal.vue';
 import HeroSphere from '~/components/HeroSphere.vue';
+import HeroHeadline from '~/components/HeroHeadline.vue';
 
 const showContact = ref(false)
+const heroSubRef = ref<HTMLElement | null>(null)
+const heroCtasRef = ref<HTMLElement | null>(null)
+
+let subtitleFadeTrigger: ScrollTrigger | null = null
+
+function onAssembled() {
+  // Fade in subtitle and CTAs
+  gsap.to([heroSubRef.value, heroCtasRef.value], {
+    opacity: 1,
+    y: 0,
+    duration: 0.6,
+    stagger: 0.15,
+    ease: 'power2.out',
+    onComplete: setupSubtitleFadeOut,
+  })
+}
+
+function setupSubtitleFadeOut() {
+  const heroSection = heroSubRef.value?.closest('.hero') as HTMLElement | null
+  if (!heroSection) return
+
+  const fadeTl = gsap.timeline({ paused: true })
+  fadeTl.to([heroSubRef.value, heroCtasRef.value], {
+    opacity: 0,
+    duration: 0.5,
+  })
+
+  subtitleFadeTrigger = ScrollTrigger.create({
+    trigger: heroSection,
+    start: 'top top',
+    end: '+=50%',
+    scrub: 0.5,
+    animation: fadeTl,
+  })
+}
+
+onUnmounted(() => {
+  subtitleFadeTrigger?.kill()
+})
 </script>
 
 <style>
@@ -91,14 +138,7 @@ body {
   overflow: hidden;
 }
 
-.hero h1 {
-  font-size: 4.5rem;
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  color: #ff2d55;
-  margin-bottom: 1.5rem;
-}
+/* h1 styles moved to HeroHeadline.vue */
 
 .hero-sub {
   font-size: 1rem;
@@ -176,8 +216,5 @@ body {
     justify-content: center;
   }
 
-  .hero h1 {
-    font-size: 2.5rem;
-  }
 }
 </style>
