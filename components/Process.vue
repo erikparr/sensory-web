@@ -1,5 +1,5 @@
 <template>
-  <section class="process">
+  <section id="process" class="process">
     <h2 class="process-title">Process</h2>
     <div class="process-list">
       <div v-for="step in steps" :key="step.number" class="process-row">

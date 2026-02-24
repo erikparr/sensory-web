@@ -5,7 +5,7 @@
         <ClientOnly>
           <HeroHeadline @assembled="onAssembled" />
           <template #fallback>
-            <h1>We design and build digital experiences that ship.</h1>
+            <h1>We design and build AI-native products that ship.</h1>
           </template>
         </ClientOnly>
         <p ref="heroSubRef" class="hero-sub" style="opacity: 0">From strategy to prototypes to production-ready code to results.</p>
@@ -34,13 +34,12 @@
     <CtaBanner @open-contact="showContact = true" />
 
     <Footer />
-
-    <ContactModal :visible="showContact" @close="showContact = false" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onUnmounted } from 'vue'
+import { ref, inject, onUnmounted } from 'vue'
+import type { Ref } from 'vue'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import FeaturedWork from '~/components/FeaturedWork.vue';
@@ -50,11 +49,10 @@ import Philosophy from '~/components/Philosophy.vue';
 import About from '~/components/About.vue';
 import CtaBanner from '~/components/CtaBanner.vue';
 import Footer from '~/components/Footer.vue';
-import ContactModal from '~/components/ContactModal.vue';
 import HeroSphere from '~/components/HeroSphere.vue';
 import HeroHeadline from '~/components/HeroHeadline.vue';
 
-const showContact = ref(false)
+const showContact = inject<Ref<boolean>>('showContact', ref(false))
 const heroSubRef = ref<HTMLElement | null>(null)
 const heroCtasRef = ref<HTMLElement | null>(null)
 

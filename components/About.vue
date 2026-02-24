@@ -1,5 +1,5 @@
 <template>
-  <section class="about">
+  <section id="studio" class="about">
     <div class="about-inner">
       <div class="about-left">
         <h2>A small team that thinks big.</h2>

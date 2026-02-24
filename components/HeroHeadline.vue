@@ -18,7 +18,7 @@ const emit = defineEmits<{
   assembled: []
 }>()
 
-const words = ['We', 'design', 'and', 'build', 'digital', 'experiences', 'that', 'ship.']
+const words = ['We', 'design', 'and', 'build', 'AI-native', 'products', 'that', 'ship.']
 
 // Assembly: words fly in from varied diagonal directions (organic entry)
 const wordAnimMap = [

@@ -1,5 +1,5 @@
 <template>
-  <section class="services">
+  <section id="services" class="services">
     <h2 class="services-title">Services</h2>
     <div class="services-grid">
       <div v-for="service in services" :key="service.title" class="service-card">

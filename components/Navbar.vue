@@ -14,10 +14,10 @@
         <a href="#services" @click="closeMenu">Services</a>
         <a href="#process" @click="closeMenu">Process</a>
         <a href="#studio" @click="closeMenu">Studio</a>
-        <a href="#contact" @click="closeMenu">Contact</a>
+        <a href="#" @click.prevent="handleContact">Contact</a>
       </div>
 
-      <a href="#contact" class="navbar-cta">Start a Project</a>
+      <a href="#" class="navbar-cta" @click.prevent="handleContact">Start a Project</a>
     </div>
   </nav>
 </template>
@@ -25,10 +25,19 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
+const emit = defineEmits<{
+  'open-contact': []
+}>()
+
 const menuOpen = ref(false);
 
 function closeMenu() {
   menuOpen.value = false;
+}
+
+function handleContact() {
+  closeMenu();
+  emit('open-contact');
 }
 
 function scrollToTop() {
